@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from web.models import Producto
+from django.utils import timezone
 
-# Create your views here.
 def lista_producto(request):
-    return render(request, 'web/lista_producto.html', {})
+    producto = Producto.objects.all()
+    return render(request, 'web/lista_producto.html', {'producto': producto})
