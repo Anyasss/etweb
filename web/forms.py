@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import Producto
 
 class PostForm(forms.ModelForm):
