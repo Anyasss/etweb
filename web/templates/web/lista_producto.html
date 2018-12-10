@@ -1,19 +1,36 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
 <html>
     <head>
         <title>Web Escuela de Emprendimiento</title>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/web.css' %}">
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1><a href="/">Web Escuela de Emprendimiento</a></h1>
         </div>
-        {% for producto in producto %}
-        <div>
-          <p>{{ producto.created_date }}</p>
-          <h1><a href = "">{{ producto.nombre }} </a></h1>
-          <p>{{ producto.costo_real }}</p>
-          <p>{{ producto.tienda }}</p>
-          <p>{{ producto.notas|linebreaksbr }}</p>
+        {% block content %}
+        <div class="content container">
+          <div class="row">
+            <div class="col-md-8">
+              {% for producto in producto %}
+              <div class="post">
+                <div class="date">
+                  <p>published: {{ producto.created_date }}</p>
+                </div>
+                <h1><a href="{% url 'detalle_producto' pk=producto.pk %}">{{ producto.nombre }}</a></h1>
+                <p>{{ producto.costo_real }}</p>
+                <p>{{ producto.tienda }}</p>
+                <p>{{ producto.notas|linebreaksbr }}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
         </div>
-        {% endfor %}
+        {% endblock %}
     </body>
 </html>

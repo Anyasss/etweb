@@ -1,0 +1,14 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+    <div class="post">
+            <div class="date">
+                {{ producto.created_date }}
+            </div>
+        <h1>{{ producto.nombre }}</h1>
+        <p>{{ producto.costo_presu }}</p>
+        <p>{{ producto.costo_real }}</p>
+        <p>{{ producto.tienda }}</p>
+        <p>{{ producto.notas|linebreaksbr }}</p>
+    </div>
+{% endblock %}
